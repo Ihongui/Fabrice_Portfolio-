@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  # EMAIL_FROM holds a public sender address (also used as a fallback in code), not a secret.
+  SECRETS_SCAN_OMIT_KEYS = "EMAIL_FROM"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
