@@ -1,0 +1,13 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { connectDb } from "@/lib/db";
+import Content from "@/models/Content";
+import { deleteContent, saveContent } from "./actions";
+export default async function ContentAdmin({ searchParams }: { searchParams: Promise<{ key?: string }> }) {
+  const session = await auth(); if (!session?.user) redirect("/admin/login");
+  await connectDb(); const records = await Content.find().sort({ order: 1, key: 1 }).lean(); const { key } = await searchParams;
+  const current = records.find((item) => item.key === key);
+  const value = current ? JSON.parse(JSON.stringify(current)) as { key: string; title: { en: string; fr: string }; body: { en: string; fr: string }; order: number; visible: boolean; data: unknown } : null;
+  return <><h1>Content editor</h1><p>Edit bilingual section copy and portfolio records. Extra data must be valid JSON.</p><div className="grid"><aside className="card"><h2>Content items</h2><p><Link href="/admin/content">＋ New item</Link></p><ul>{records.map((item) => <li key={item.key}><Link href={`/admin/content?key=${encodeURIComponent(item.key)}`}>{item.key}</Link> {item.visible ? "●" : "○"}</li>)}</ul></aside><form action={saveContent} className="card" style={{ display: "grid", gap: 12 }}><label>Key<input name="key" required pattern="[a-z0-9][a-z0-9._-]*" defaultValue={value?.key}/></label><div className="grid"><label>Title (EN)<input name="titleEn" maxLength={250} defaultValue={value?.title.en}/></label><label>Titre (FR)<input name="titleFr" maxLength={250} defaultValue={value?.title.fr}/></label></div><div className="grid"><label>Body (EN)<textarea name="bodyEn" rows={8} maxLength={20000} defaultValue={value?.body.en}/></label><label>Texte (FR)<textarea name="bodyFr" rows={8} maxLength={20000} defaultValue={value?.body.fr}/></label></div><label>Order<input name="order" type="number" min={0} defaultValue={value?.order ?? 0}/></label><label>Visible<select name="visible" defaultValue={value?.visible === false ? "false" : "true"}><option value="true">Visible</option><option value="false">Hidden</option></select></label><label>Extra data (JSON)<textarea name="data" rows={8} defaultValue={JSON.stringify(value?.data ?? {}, null, 2)}/></label><button className="button" type="submit">Save content</button></form></div>{value && <form action={deleteContent} style={{ marginTop: 16 }}><input type="hidden" name="key" value={value.key}/><button className="button secondary" type="submit">Delete {value.key}</button></form>}<p><Link href="/admin">← Dashboard</Link></p></>;
+}

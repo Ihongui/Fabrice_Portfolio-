@@ -1,0 +1,6 @@
+{
+  "nav": { "home": "Accueil", "philosophy": "Philosophie", "originality": "Originalité", "cv": "CV", "projects": "Projets", "academics": "Études", "references": "Références", "contact": "Contact", "download": "Télécharger le CV" },
+  "home": { "eyebrow": "Technologie · Humain · Sens", "title": "Concevoir des technologies utiles aux personnes.", "intro": "Je suis Fabrice Ihongui, étudiant en informatique et professionnel de la technologie à Accra, au Ghana. Je travaille dans le support informatique, le cloud, la cybersécurité et la coordination de projets.", "work": "Découvrir mes projets", "contact": "Me contacter", "about": "À propos", "featured": "Projet à la une", "skills": "Mes compétences", "progress": "En cours" },
+  "pages": { "philosophy": "Philosophie de travail", "originality": "Déclaration d'originalité", "cv": "Curriculum vitæ", "projects": "Projets sélectionnés", "academics": "Plan d'études", "references": "Références", "contact": "Contact" },
+  "common": { "comingSoon": "Cette rubrique est en préparation. Revenez bientôt.", "liveDemo": "Démo en ligne", "inProgress": "En cours", "completed": "Terminé", "requestAccess": "Demander l’accès", "email": "E-mail", "location": "Accra, Ghana", "translationPending": "Traduction en attente" }
+}

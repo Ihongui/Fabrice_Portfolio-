@@ -1,0 +1,4 @@
+import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
+async function login(form: FormData) { "use server"; try { await signIn("credentials", { email: form.get("email"), password: form.get("password"), redirectTo: "/admin" }); } catch (error) { if (error instanceof AuthError) return; throw error; } }
+export default function LoginPage() { return <section className="card" style={{ maxWidth: 440 }}><h1>Admin sign in</h1><p>Sign in with your portfolio administrator account.</p><form action={login} style={{ display: "grid", gap: 14 }}><label>Email<input name="email" type="email" autoComplete="username" required /></label><label>Password<input name="password" type="password" autoComplete="current-password" required /></label><button className="button" type="submit">Sign in</button></form></section>; }

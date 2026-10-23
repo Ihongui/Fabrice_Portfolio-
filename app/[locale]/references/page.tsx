@@ -1,0 +1,2 @@
+import { getTranslations } from "next-intl/server";
+export default async function References({ params }: { params: Promise<{ locale: string }> }) { const { locale } = await params; const t = await getTranslations({ locale }); return <main className="shell page"><span className="eyebrow">Private by request</span><h1>{t("pages.references")}</h1><section className="section"><p>{t("common.comingSoon")}</p><a className="button" href={`/${locale}/request-access`}>{t("common.requestAccess")}</a></section></main>; }

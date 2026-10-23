@@ -1,0 +1,6 @@
+{
+  "nav": { "home": "Home", "philosophy": "Philosophy", "originality": "Originality", "cv": "Resume", "projects": "Work", "academics": "Academics", "references": "References", "contact": "Contact", "download": "Download CV" },
+  "home": { "eyebrow": "Technology · People · Purpose", "title": "Building practical technology for real people.", "intro": "I’m Fabrice Ihongui, an IT student and technology professional in Accra, Ghana. I work across IT support, cloud computing, cybersecurity and project coordination.", "work": "Explore my work", "contact": "Get in touch", "about": "About me", "featured": "Featured work", "skills": "What I bring", "progress": "Currently in progress" },
+  "pages": { "philosophy": "Work Philosophy", "originality": "Statement of Originality", "cv": "Curriculum Vitae", "projects": "Selected Work", "academics": "Academic Plan of Study", "references": "References", "contact": "Contact" },
+  "common": { "comingSoon": "This section is being prepared. Please check back soon.", "liveDemo": "Live demo", "inProgress": "In progress", "completed": "Completed", "requestAccess": "Request access", "email": "Email", "location": "Accra, Ghana", "translationPending": "Translation pending" }
+}
