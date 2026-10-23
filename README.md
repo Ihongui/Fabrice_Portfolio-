@@ -20,7 +20,7 @@ There is no public registration. Run `npm run admin:hash`, use the resulting Arg
 
 ## Netlify deployment
 
-Connect the repository to Netlify. The included `netlify.toml` uses `npm run build` and the official `@netlify/plugin-nextjs` adapter. Configure `MONGODB_URI`, `AUTH_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `NEXT_PUBLIC_SITE_URL`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `EMAIL_FROM` in Site configuration → Environment variables. Leave `NEXT_PUBLIC_SITE_URL` pointed to the provided `*.netlify.app` address until a custom domain is ready. File uploads use the Netlify Blobs stores `portfolio-public` and `portfolio-private`; configure Netlify Blobs for local development with `netlify dev` and in the deployed site. Access approval emails require a verified Resend sender.
+Connect the repository to Netlify. The included `netlify.toml` uses `npm run build` and the official `@netlify/plugin-nextjs` adapter. Configure `MONGODB_URI`, `AUTH_SECRET`, `AUTH_TRUST_HOST=true`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `NEXT_PUBLIC_SITE_URL`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `EMAIL_FROM` in Site configuration → Environment variables. Give server secrets both Functions and Builds scope and apply them to the Production deploy context. Set the MongoDB URI database path to `/portfolio` so the app reads the records created by `npm run seed`. Generate the secret with `npx auth secret`; generate the password hash with `npm run admin:hash` in a terminal, then paste the hash into Netlify. Redeploy after changing variables. Leave `NEXT_PUBLIC_SITE_URL` pointed to the provided `*.netlify.app` address until a custom domain is ready. File uploads use the Netlify Blobs stores `portfolio-public` and `portfolio-private`; configure Netlify Blobs for local development with `netlify dev` and in the deployed site. Access approval emails require a verified Resend sender.
 
 ## Available checks
 
@@ -32,4 +32,5 @@ Connect the repository to Netlify. The included `netlify.toml` uses `npm run bui
 ## Current scope
 
 The scaffold includes bilingual public pages, a bilingual content editor backed by a generic content collection, a structured CV preview and PDF route, contact form validation/rate limiting/inbox, private access requests with expiring, revocable download links, admin file uploads to Netlify Blobs, analytics, contact inbox, audit events, and initial seed records. Remaining work for the owner is listed in `POST_BUILD_CHECKLIST.md`.
+
 
